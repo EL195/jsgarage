@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class GlobalController extends AbstractController
@@ -50,8 +51,20 @@ class GlobalController extends AbstractController
     /**
      * @Route("/login", name="login")
      */
-    public function login()
+    public function login(AuthenticationUtils $util)
     {
-        return $this->render('global/inscription.html.twig');
+        return $this->render('global/login.html.twig',
+        [
+            "lastUserName" => $util->getLastUserName(),
+            "error" => $util->getLastAuthenticationError()
+        ]);
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+        
     }
 }
