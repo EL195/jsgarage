@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 27, 2021 at 07:41 AM
+-- Generation Time: Sep 28, 2021 at 09:57 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -39,7 +39,8 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20210924123943', '2021-09-24 14:39:54', 110);
+('DoctrineMigrations\\Version20210924123943', '2021-09-24 14:39:54', 110),
+('DoctrineMigrations\\Version20210927105344', '2021-09-27 12:54:21', 44);
 
 -- --------------------------------------------------------
 
@@ -88,6 +89,31 @@ INSERT INTO `modele` (`id`, `marque_id`, `libelle`, `prix_moyen`, `image`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `username`, `password`, `roles`) VALUES
+(1, 'marc', 'toto', 'ROLE_USER'),
+(2, 'top', '$2y$13$XarFUisyu8QFSYPzmoV9NuB2zel7Q1UX9UqfWZheSe.IFBlPWt13a', 'ROLE_USER'),
+(3, 'tata', '$2y$13$jTQK5CXdKUI7pc9dhbpuFOOP0iN7qLdpvJqQg1xFMMdrP6yRaQmeu', 'ROLE_USER'),
+(4, 'mat', '$2y$13$fNf4un3d6KL5VFACj14UEuAirhyhv.dcbwj/vSh/6rTtUwraHkfzW', 'ROLE_USER'),
+(5, 'tac', '$2y$13$dhK/4D6p7dbwc0hNP8VAzOWd5m2d0IQ8qkdaoD2G.7pJ4XMaOk7Hi', 'ROLE_USER'),
+(6, 'js', '$2y$13$jVoH6AvXElZlzaFs1Zs49uvcS2nJjhT3nQCGwkaQYOe1UA3Q2CnrW', 'ROLE_ADMIN');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `voiture`
 --
 
@@ -104,7 +130,6 @@ CREATE TABLE `voiture` (
 --
 
 INSERT INTO `voiture` (`id`, `modele_id`, `immatriculation`, `nb_portes`, `annee`) VALUES
-(1, 7, 'test152', 5, 2010),
 (2, 6, 'GV8172CF', 3, 2014),
 (3, 6, 'ZB8120JT', 3, 1993),
 (4, 6, 'CN0869NQ', 3, 2021),
@@ -149,6 +174,12 @@ ALTER TABLE `modele`
   ADD KEY `IDX_100285584827B9B2` (`marque_id`);
 
 --
+-- Indexes for table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `voiture`
 --
 ALTER TABLE `voiture`
@@ -170,6 +201,12 @@ ALTER TABLE `marque`
 --
 ALTER TABLE `modele`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `voiture`
