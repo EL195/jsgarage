@@ -44,9 +44,17 @@
                 width: 15%;
                 margin-top: -20px;
             }
+            .search{
+                margin-top : 23px;
+            }
         </style>
         {% endblock %}        
     </head>
+    <main role="main" class="container main">
+        {% include 'flash_messages.html.twig' %}
+
+
+    </main>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid"style="width: 80%!important;">
@@ -82,6 +90,9 @@
                         <a style="color: white!important;" class="nav-link" href="{{ path('logout') }}">Déconnexion</a> 
                     </li>
                     {% endif %}
+                     <li class="nav-item">
+                        <a style="color: white!important;" class="nav-link" href="{{ path('contact') }}">Contact</a> 
+                    </li>
                 </ul>
                 </div>
             </div>
