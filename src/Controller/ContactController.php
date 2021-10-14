@@ -30,7 +30,7 @@ class ContactController extends AbstractController
                 'text/html'
                 );
                 $mailer->send($message);
-                $this->get('mailer')->send($message);
+               // $this->get('mailer')->send($message);
 
 
                 $this->addFlash('success', 'Message envoyé');
