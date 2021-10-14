@@ -25,13 +25,13 @@ class ContactController extends AbstractController
                 $message = (new \Swift_Message('Nouveau message de JS Garage!'))
                 -> setSubject($contactFormData['objet'])
                 ->setFrom($contactFormData['Email'])
-                ->setTo('micheltanga0@gmail.com')
+                ->setTo('jsnkodia@gmail.com')
                 ->setBody(
                 $contactFormData['message'],
                 'text/html'
                 );
                 $mailer->send($message);
-                $this->get('mailer')->send($message);
+                //$this->get('mailer')->send($message);
 
                 //Afficher le message si le mail a été envoyé
                 $this->addFlash('success', 'Message envoyé');

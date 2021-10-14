@@ -29,7 +29,7 @@ class GlobalController extends AbstractController
 
     public function inscription(Request $request, EntityManagerInterface $om, UserPasswordHasherInterface $passwordHasher)
     {
-        //Récupération des infos de l'utilisateur lors de l'envoi du formulaire de creation de comte
+        //Récupération des infos de l'utilisateur lors de l'envoi du formulaire de creation de compte
         $utilisateur = new Utilisateur();
         $form = $this->createForm(InscriptionType::class, $utilisateur);
         $form->handleRequest($request);
