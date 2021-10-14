@@ -1,13 +1,18 @@
+{# Import du navbar #}
 {% extends 'base.html.twig' %}
 
+{# Titre de la page #}
 {% block title %}Inscription{% endblock %}
 
+{# Titre de la section #}
 {% block monTitre %}Inscription{% endblock %}
 
+{# Contenu de la page #}
 {% block body %}
+<h1>Créer un compte en 5 minutes</h1>
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <input type="submit" class="btn btn-primary" value="valider">
+    <input type="submit" class="btn btn-primary" value="Créer un compte">
 {{ form_end(form) }}
 
 {% endblock %}

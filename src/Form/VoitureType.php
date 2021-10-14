@@ -13,6 +13,7 @@ class VoitureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // Création du formulaire de création d'une voiture
         $builder
             ->add('immatriculation')
             ->add('nbPortes')
@@ -27,6 +28,7 @@ class VoitureType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        // COnfiguration du formulaire de création d'une voiture
         $resolver->setDefaults([
             'data_class' => Voiture::class,
         ]);

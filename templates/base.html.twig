@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      {# Style de l'entete #}
         {% block stylesheets %}
         <style>
             footer {
@@ -47,13 +48,16 @@
             .search{
                 margin-top : 23px;
             }
+            .bg-primary {
+                --bs-bg-opacity: 1;
+                background-color: #008060!important;
+            }
         </style>
         {% endblock %}        
     </head>
     <main role="main" class="container main">
+    {# Importation des messges flash #}
         {% include 'flash_messages.html.twig' %}
-
-
     </main>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -103,9 +107,10 @@
         {% block javascripts %}{% endblock %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </body>
+    {# Pied de page global de l'application  #}
 <footer >
     <div class="footer">
-          <a class="titrefooter" href="#">Mentions légales </a> |  <a class="titrefooter" href="#">Politique de confidentialité</a>  | <a class="titrefooter" href="#">Cookies</a>
+          <a class="titrefooter" href="{{ path('mention') }}">Mentions légales </a> |  <a class="titrefooter" href="{{ path('privacy') }}">Politique de confidentialité</a>  | <a class="titrefooter" href="{{ path('cookies') }}">Cookies</a>
           <p>© JS Garage 2021</p>
     </div>
 </footer>

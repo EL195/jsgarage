@@ -25,8 +25,11 @@ class GlobalController extends AbstractController
     /**
      * @Route("/inscription", name="inscription")
      */
+
+
     public function inscription(Request $request, EntityManagerInterface $om, UserPasswordHasherInterface $passwordHasher)
     {
+        //Récupération des infos de l'utilisateur lors de l'envoi du formulaire de creation de comte
         $utilisateur = new Utilisateur();
         $form = $this->createForm(InscriptionType::class, $utilisateur);
         $form->handleRequest($request);
@@ -41,7 +44,7 @@ class GlobalController extends AbstractController
             return $this->redirectToRoute("accueil");
         }
 
-        
+        // Renvoie de la page après inscription d'un nouvel utilisateur
         return $this->render('global/inscription.html.twig',
         [
             "form" => $form->createView()
@@ -53,6 +56,7 @@ class GlobalController extends AbstractController
      */
     public function login(AuthenticationUtils $util)
     {
+        //Affichage de la page de connexion
         return $this->render('global/login.html.twig',
         [
             "lastUserName" => $util->getLastUserName(),

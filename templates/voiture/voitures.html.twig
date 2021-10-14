@@ -11,7 +11,25 @@
         {{ message }}
     </div>
 {% endfor %}
+<style>
+    .add{
+        margin-left: -12px;
+        margin-bottom: 10px;
+    }
+    .colbtn {
+        -ms-flex: 1 0 0%;
+        flex: 0.4 0 0%;
+    }
+    .boutons{
+        padding-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pad{
+         padding-bottom: 200px;
+    }
 
+</style>
 {{ form_start(form) }}
 <div class="row no-gutters align-item-center text-center">
     <div class="col">
@@ -26,7 +44,7 @@
 </div>
 {{ form_end(form) }}
 {% if admin %}
-    <a href=" {{ path('creationVoiture') }} " class="d-block btn btn-success">Ajouter</a>
+    <a href=" {{ path('creationVoiture') }} " class="add search btn btn-primary">Ajouter</a>
 {% endif %}
 <div class="row no-gutters">
     {% for voiture in voitures %}
@@ -49,8 +67,8 @@
                     </div>
                 </div>
                 {% if admin %}
-                    <div class="row no-gutters">
-                        <a href="{{ path('modifVoiture', {'id' : voiture.id}) }}" class="col btn btn-warning">Modifier</a>
+                    <div class="row no-gutters boutons">
+                        <a href="{{ path('modifVoiture', {'id' : voiture.id}) }}" class="colbtn btn btn-warning">Modifier</a>
                         <form method="post" class="col" action="{{ path('supVoiture', {'id':voiture.id})}}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ?');">
                             <input type="hidden" name="_method" value="SUP">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ voiture.id) }}">
@@ -62,7 +80,7 @@
         </div>   
     {% endfor %}
 </div>
-<div class="navigation">
+<div class="navigation pad">
     {{ knp_pagination_render(voitures) }}
 </div>
 

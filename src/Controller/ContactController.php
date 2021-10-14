@@ -15,9 +15,10 @@ class ContactController extends AbstractController
      */
     public function index(Request $request, \Swift_Mailer $mailer): Response
     {
+        // Création du formulaire
         $form = $this->createForm(ContactType::class);
         
-
+        //Récupération des infos du formulaire s'il est soumis puis envoi du mail
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
         $contactFormData = $form->getData();
@@ -32,13 +33,13 @@ class ContactController extends AbstractController
                 $mailer->send($message);
                 $this->get('mailer')->send($message);
 
-
+                //Afficher le message si le mail a été envoyé
                 $this->addFlash('success', 'Message envoyé');
+                //Revenir sur la page
                 return $this->redirectToRoute('contact');
         }
-
+        // Afficher le formulaire avec al création des champs
         return $this->render('contact/index.html.twig', [
-            //'our_form' => $form,
             'controller_name' => 'ContactController',
             'our_form' => $form->createView(),
          ]);
