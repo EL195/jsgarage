@@ -31,11 +31,6 @@ class ContactController extends AbstractController
                 'text/html'
                 );
                 $mailer->send($message);
-<<<<<<< HEAD
-               // $this->get('mailer')->send($message);
-=======
-                //$this->get('mailer')->send($message);
->>>>>>> f8b83dae65e0e32ba01ce39b37b01c0ddd4e240b
 
                 //Afficher le message si le mail a été envoyé
                 $this->addFlash('success', 'Message envoyé');
