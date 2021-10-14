@@ -69,19 +69,19 @@
 
             <div class="collapse navbar-collapse" id="navbarColor01" >
                 <ul class="navbar-nav" style="float: right!important;">
-                  <!--  <li class="nav-item">
-                        <a class="nav-link" href="{{ path('accueil') }}">Accueil</span></a>
-                    </li> -->
+                    {# Afficher ce menu pour tous les utilisateurs connectés #}
                     {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
                             <a style="color: white!important;" class="nav-link" href="{{ path('voitures') }}">Nos voitures d'ocasion</a>
                         </li>
                     {% endif %}
+                    {# Afficher ce menu uniquement pour les admins #}
                     {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('admin') }}">admin</a> 
                     </li>
                     {% endif %}
+                    {# Afficher ces éléments lorsqu'on n'est pas connecté #}
                     {% if not app.user %}
                     <li class="nav-item">
                         <a style="color: white!important;" class="nav-link" href="{{ path('inscription') }}">Créer un compte</a> 
@@ -90,6 +90,7 @@
                         <a style="color: white!important;" class="nav-link" href="{{ path('login') }}">Connectez-vous</a> 
                     </li>
                     {% else %}
+                    {# Si connecté #}
                     <li class="nav-item">
                         <a style="color: white!important;" class="nav-link" href="{{ path('logout') }}">Déconnexion</a> 
                     </li>
