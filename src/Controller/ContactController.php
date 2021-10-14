@@ -24,7 +24,7 @@ class ContactController extends AbstractController
         $contactFormData = $form->getData();
                 $message = (new \Swift_Message('Nouveau message de JS Garage!'))
                 -> setSubject($contactFormData['objet'])
-                ->setFrom($contactFormData['email'])
+                ->setFrom($contactFormData['Email'])
                 ->setTo('micheltanga0@gmail.com')
                 ->setBody(
                 $contactFormData['message'],
