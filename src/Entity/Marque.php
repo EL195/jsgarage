@@ -58,21 +58,20 @@ class Marque
     {
         return $this->modeles;
     }
-
+    // Association du modèle à la marque
     public function addModele(Modele $modele): self
     {
         if (!$this->modeles->contains($modele)) {
             $this->modeles[] = $modele;
             $modele->setMarque($this);
         }
-
         return $this;
     }
 
     public function removeModele(Modele $modele): self
     {
         if ($this->modeles->removeElement($modele)) {
-            // set the owning side to null (unless already changed)
+            // définir le côté propriétaire sur null (sauf si déjà modifié)
             if ($modele->getMarque() === $this) {
                 $modele->setMarque(null);
             }

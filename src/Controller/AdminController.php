@@ -50,12 +50,13 @@ class AdminController extends AbstractController
         {
             $voiture = new Voiture();
         }
-        
+        // Récupération des infos d'un vehicule et ajout dans la bd
         $form = $this->createForm(VoitureType::class, $voiture);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
+            // ici on récupère la voiture à modifier et on procède à la modification de ses données avant de renvoyer la page
             $om->persist($voiture);
             $om->flush();
             $this->addFlash('success', "L'action a bien été effectuée!");
@@ -74,6 +75,7 @@ class AdminController extends AbstractController
      */
     public function suppression(Voiture $voiture, Request $request, EntityManagerInterface $om)
     {
+        // Ici on recupère le token, l'id du vehicule à supprimer. Après la suppressio on renvoie la page
         if($this->isCsrfTokenValid("SUP".$voiture->getId(), $request->get("_token")))
         {
             $om->remove($voiture);

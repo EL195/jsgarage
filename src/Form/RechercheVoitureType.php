@@ -12,6 +12,7 @@ class RechercheVoitureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // Création des champs du formulaire de recherche
         $builder
             ->add('minAnnee', IntegerType::class,
             [
@@ -27,6 +28,7 @@ class RechercheVoitureType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        // Configuration du formulaire de recherche
         $resolver->setDefaults([
             'data_class' => RechercheVoiture::class,
         ]);

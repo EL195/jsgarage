@@ -12,6 +12,7 @@ class InscriptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // Création des champs du formulaire pour l'inscription
         $builder
             ->add('username')
             ->add('password', PasswordType::class)
@@ -21,6 +22,7 @@ class InscriptionType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        //Configuration du formulaire
         $resolver->setDefaults([
             'data_class' => Utilisateur::class,
         ]);

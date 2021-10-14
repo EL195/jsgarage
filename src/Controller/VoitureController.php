@@ -20,16 +20,17 @@ class VoitureController extends AbstractController
     public function index(VoitureRepository $repo, PaginatorInterface $paginatorInterface, Request $request)
     {
         $rechercheVoiture = new RechercheVoiture();
-
+        // Création du formulaire de recherche
         $form = $this->createForm(RechercheVoitureType::class, $rechercheVoiture);
         $form->handleRequest($request);
-        
+        // Création de la pagination
         $voitures = $paginatorInterface->paginate
         (
             $repo->findAllWithPagination($rechercheVoiture), 
             $request->query->getInt('page', 1),
             6
         );
+        //Afficher le formulaire d erecherche avecla création des champs du formulaire de création d'une voiture
         return $this->render('voiture/voitures.html.twig',
         [
             "voitures" => $voitures,

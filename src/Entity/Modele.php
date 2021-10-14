@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\ModeleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
+/* Un ORM (Object Relation Mapper) permet de gérer manipuler et de récupérer des tables de données de
+ la même façon qu'un objet quelconque, donc en gardant le langage PHP. Plus besoin de requête MySQL,
+PostgresSQL ou autre. */
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,6 +53,8 @@ class Modele
         $this->voitures = new ArrayCollection();
     }
 
+
+   // on get et set les différents champs
     public function getId(): ?int
     {
         return $this->id;

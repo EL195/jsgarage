@@ -21,6 +21,7 @@ class VoitureRepository extends ServiceEntityRepository
         parent::__construct($registry, Voiture::class);
     }
 
+    // Fonction permettant de rechecher un vehicule
     public function findAllWithPagination(RechercheVoiture $rechercheVoiture) : Query
     {
         $req = $this->createQueryBuilder('v');

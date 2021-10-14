@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\VoitureRepository;
+
+/* Un ORM (Object Relation Mapper) permet de gérer manipuler et de récupérer des tables de données de
+ la même façon qu'un objet quelconque, donc en gardant le langage PHP. Plus besoin de requête MySQL,
+PostgresSQL ou autre. */
 use Doctrine\ORM\Mapping as ORM;
 
 /**
