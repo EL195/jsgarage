@@ -1,17 +1,24 @@
+{# Importation du navbar #}
 {% extends 'base.html.twig' %}
-
+{# Titre de la page #}
 {% block title %}Liste des voitures{% endblock %}
-
+{# Titre de la secion #}
 {% block monTitre %}Liste des voitures{% endblock %}
 
+{# Debut du corps de la page #}
 {% block body %}
 
+<<<<<<< HEAD
 
+=======
+{# Messages après le résultat d'une suppression #}
+>>>>>>> 1e240703f8c03933add465fd683eea1e45863a7d
 {% for message in app.flashes('success') %}
     <div class="alert alert-success">
         {{ message }}
     </div>
 {% endfor %}
+{# Style de la page #}
 <style>
     .add{
         margin-left: -12px;
@@ -31,6 +38,7 @@
     }
 
 </style>
+{# Formulaire de recherche #}
 {{ form_start(form) }}
 <div class="row no-gutters align-item-center text-center">
     <div class="col">
@@ -44,9 +52,11 @@
     </div>  
 </div>
 {{ form_end(form) }}
+{# Bouton d'ajout dun nouveau vehicule avec redirection vers le formulaire de creation #}
 {% if admin %}
     <a href=" {{ path('creationVoiture') }} " class="add search btn btn-primary">Ajouter</a>
 {% endif %}
+{# Affichages des vehicules #}
 <div class="row no-gutters">
     {% for voiture in voitures %}
         <div class="col-12 col-lg-6 p-1">
@@ -67,6 +77,7 @@
                         </div>
                     </div>
                 </div>
+                {# Si on est admin on a droit aux boutons modifier et supprimer #}
                 {% if admin %}
                     <div class="row no-gutters boutons">
                         <a href="{{ path('modifVoiture', {'id' : voiture.id}) }}" class="colbtn btn btn-warning">Modifier</a>
@@ -81,6 +92,7 @@
         </div>   
     {% endfor %}
 </div>
+{# Pagination  #}
 <div class="navigation pad">
     {{ knp_pagination_render(voitures) }}
 </div>
